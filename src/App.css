@@ -1,0 +1,41 @@
+.app {
+	text-align: center;
+}
+
+.app-main {
+	min-height: 300vh;
+	background-image: linear-gradient(135deg, #fff6b7 10%, #f6416c 100%);
+}
+.app-header {
+	color: white;
+	font-size: calc(10px + 2vmin);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 80px;
+	background: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 8px 32px 0 #b1af9e5e;
+	backdrop-filter: blur(7.5px);
+	-webkit-backdrop-filter: blur(7.5px);
+	border-radius: 2px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.container {
+	display: flex;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+/* .App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+} */
