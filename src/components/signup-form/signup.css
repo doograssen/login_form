@@ -1,0 +1,28 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	align-items: center;
+	padding: 40px 30px;
+}
+.form-input {
+	color: #4A4737;
+	font-size: 20px;
+	min-height: 40px;
+	width: 100%;
+	padding: 0 10px;
+	border: none;
+	border-radius: 4px;
+	background: #FCFAEE;
+	box-shadow: inset 5px 5px 8px #e8e6db,
+							inset -5px -5px 8px #ffffff;
+}
+.form-submit {
+	color: #4A4737;
+	font-size: 20px;
+	font-weight: 700;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	background: #FBEBDE;
+}
