@@ -2,14 +2,9 @@
 import loginImg from '../../images/login.svg';
 import './login.css';
 
-export const LoginBtn = ({state, setState}) => {
-	const btnHandler=() => {
-		setState(() => {
-			return !state ? !state : state;
-		});
-	};
+export const LoginBtn = ({clickHandler}) => {
 	return (
-		<button className="login" aria-label="login" onClick={btnHandler}>
+		<button className="login" aria-label="login" onClick={clickHandler}>
 			<img src={loginImg} alt="login"/>
 		</button>
 	);

@@ -18,6 +18,46 @@
 	transition-timing-function: ease-in-out;
 	opacity: 0;
 }
+.modal-caption {
+	font-size: 32px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.modal-header {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	padding: 36px 0 20px;
+	z-index: 1;
+}
+
+.modal-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	border: none;
+	background-color: transparent;
+	transition: transform 0.4s;
+	cursor: pointer;
+}
+
+.modal-close:hover {
+	transform: scale(1.2);
+}
+
+.modal-close:hover svg {
+	fill: #bb5e5e;
+}
+
+.modal-close svg {
+	transition: fill 0.4s;
+}
 
 .modal--show {
 	box-shadow: 0 8px 32px 0 #9547475e;

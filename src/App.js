@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import { useState } from 'react';
 import './App.css';
 import { LoginBtn } from './components/login-btn/LoginBtn';
@@ -8,17 +7,13 @@ export const App = () => {
 	const [modalState, setModalState] = useState(false);
 	return (
 		<div className="app">
-			{/* <img src={logo} className="App-logo" alt="logo" /> */}
-			{/* <p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p> */}
 			<header className="app-header">
 				<div className="container">
-					<LoginBtn state={modalState} setState={setModalState} />
+					<LoginBtn clickHandler={() => setModalState(true)} />
 				</div>
 			</header>
 			<main className="app-main"></main>
-			<Modal state={modalState} />
+			<Modal state={modalState} clickHandler={() => setModalState(false)} />
 		</div>
 	);
 };

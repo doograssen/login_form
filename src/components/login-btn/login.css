@@ -1,7 +1,7 @@
 .login {
 	margin-left: auto;
-	border: none;
 	background: none;
+	border: none;
 	transition: filter 0.4s;
 	cursor: pointer;
 }
