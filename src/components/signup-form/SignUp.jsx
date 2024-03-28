@@ -16,14 +16,16 @@ const ERRORS = {
 
 export const SignUp = () => {
 	const {getState, updateState} = useStore();
-	// const
+	const currentState = getState();
+	const {email, password, passwordConfirm} = getState();
 	const submitHandler = (event) => {
 		event.preventDefault();
-		sendFormData(getState());
+		if (!Object.values(currentState).some((element) => !element.validate)) {
+			sendFormData(getState());
+		}
 	};
-	const {email, password, passwordConfirm} = getState();
 	const onChange = ({ target }) => {
-		updateState(target.name, {value: target.value, error: null});
+		updateState(target.name, { ...currentState[target.name], value: target.value, error: null});
 	};
 
 	const onEmailBlur = ({ target }) => {
@@ -34,7 +36,7 @@ export const SignUp = () => {
 		if (!target.value) {
 			newError = ERRORS.EMPTY;
 		}
-		updateState(target.name, {value: target.value, error: newError});
+		updateState(target.name, { ...currentState[target.name], error: newError, validate: newError === null });
 	}
 
 	const onPasswordBlur = ({ target }) => {
@@ -48,7 +50,7 @@ export const SignUp = () => {
 		if (!target.value) {
 			newError = ERRORS.EMPTY;
 		}
-		updateState(target.name, {value: target.value, error: newError});
+		updateState(target.name, { ...currentState[target.name], error: newError, validate: newError === null });
 	}
 
 	return (
@@ -59,13 +61,13 @@ export const SignUp = () => {
 					id="email"
 					className="form-input"
 					name="email"
-					type="email"
+					type="text"
 					placeholder="Email"
 					value={email.value}
 					onChange={onChange}
 					onBlur={onEmailBlur}
 				/>
-				{getState().email.error && <div className="form-error">{getState().email.error}</div>}
+				{email.error && <div className="form-error">{email.error}</div>}
 			</div>
 			<div className="form-block">
 				<label htmlFor="password">Пароль</label>
@@ -79,7 +81,7 @@ export const SignUp = () => {
 					onChange={onChange}
 					onBlur={onPasswordBlur}
 				/>
-				{getState().password.error && <div className="form-error">{getState().password.error}</div>}
+				{password.error && <div className="form-error">{password.error}</div>}
 			</div>
 			<div className="form-block">
 				<label htmlFor="password-confirm">Повторить пароль</label>

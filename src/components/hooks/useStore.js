@@ -3,14 +3,17 @@ import { useState } from 'react';
 const INITIAL_STATE = {
 	email: {
 		value: '',
-		error: null
+		validate: false,
+		error: null,
 	},
 	password: {
 		value: '',
+		validate: false,
 		error: null
 	},
 	passwordConfirm: {
 		value: '',
+		validate: true,
 		error: null
 	}
 };
