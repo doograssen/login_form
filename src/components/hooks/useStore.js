@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 	},
 	passwordConfirm: {
 		value: '',
-		validate: true,
+		validate: false,
 		error: null
 	}
 };

@@ -1,3 +1,4 @@
+import { FormBlock } from "../form-block/FormBlock";
 import { useStore } from "../hooks/useStore";
 import './signup.css';
 
@@ -17,16 +18,31 @@ const ERRORS = {
 export const SignUp = () => {
 	const {getState, updateState} = useStore();
 	const currentState = getState();
-	const {email, password, passwordConfirm} = getState();
+	const {password, passwordConfirm} = getState();
 	const submitHandler = (event) => {
 		event.preventDefault();
-		if (!Object.values(currentState).some((element) => !element.validate)) {
+		if (password.value !== passwordConfirm.value || passwordConfirm.value === '') {
+			updateState('passwordConfirm', {...currentState['passwordConfirm'], error: ERRORS.MATCHING_PASSWORDS, validate: false});
+		}
+		else if (!Object.values(currentState).some((element) => !element.validate)) {
 			sendFormData(getState());
 		}
 	};
 	const onChange = ({ target }) => {
 		updateState(target.name, { ...currentState[target.name], value: target.value, error: null});
 	};
+
+	const onBlurPassConfirm = ({target}) => {
+		let newError = null;
+		let newValidate = false;
+		if (target.value !== password.value) {
+			newError = ERRORS.MATCHING_PASSWORDS;
+		}
+		else if (target.value !== ''){
+			newValidate = true;
+		}
+		updateState(target.name, { value: target.value, error: newError, validate: newValidate});
+	}
 
 	const onEmailBlur = ({ target }) => {
 		let newError = null;
@@ -55,46 +71,24 @@ export const SignUp = () => {
 
 	return (
 		<form className="form" onSubmit={submitHandler}>
-			<div className="form-block">
-				<label htmlFor="email">Email</label>
-				<input
-					id="email"
-					className="form-input"
-					name="email"
-					type="text"
-					placeholder="Email"
-					value={email.value}
-					onChange={onChange}
-					onBlur={onEmailBlur}
-				/>
-				{email.error && <div className="form-error">{email.error}</div>}
-			</div>
-			<div className="form-block">
-				<label htmlFor="password">Пароль</label>
-				<input
-					id="password"
-					className="form-input"
-					name="password"
-					type="text"
-					placeholder="Пароль"
-					value={password.value}
-					onChange={onChange}
-					onBlur={onPasswordBlur}
-				/>
-				{password.error && <div className="form-error">{password.error}</div>}
-			</div>
-			<div className="form-block">
-				<label htmlFor="password-confirm">Повторить пароль</label>
-				<input
-					id="password-confirm"
-					className="form-input"
-					name="passwordConfirm"
-					type="text"
-					placeholder="Повторить пароль"
-					value={passwordConfirm.value}
-					onChange={onChange}
-				/>
-			</div>
+			<FormBlock
+				name="email"
+				label="Email"
+				changeHandler={onChange}
+				blurHandler={onEmailBlur}
+				state={currentState} />
+			<FormBlock
+				name="password"
+				label="Пароль"
+				changeHandler={onChange}
+				blurHandler={onPasswordBlur}
+				state={currentState} />
+			<FormBlock
+				name="passwordConfirm"
+				label="Повторить пароль"
+				changeHandler={onChange}
+				blurHandler={onBlurPassConfirm}
+				state={currentState} />
 			<button className="form-submit" type="submit">Зарегистрироваться</button>
 		</form>
 	);
