@@ -27,7 +27,7 @@
 	font-size: 20px;
 	min-height: 40px;
 	width: 100%;
-	padding: 14px 10px 13px;
+	padding: 14px 40px 13px 10px;
 	border: none;
 	border-radius: 4px;
 	background: #fcfaee;
@@ -54,13 +54,16 @@
 		color 0.4s;
 	cursor: pointer;
 }
+.form-submit:disabled {
+	opacity: 0.5;
+}
 
-.form-submit:hover {
+.form-submit:hover:not(:disabled) {
 	color: #f7f5dd;
 	background-color: #c5906c;
 }
 
-.form-submit:active {
+.form-submit:active:not(:disabled) {
 	color: #f7f5dd;
 	background-color: #c5906c;
 	transform: scale(1.02);
@@ -82,4 +85,14 @@
 	bottom: 0;
 	left: 0;
 	transform: translateY(100%);
+}
+
+.form-pass {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 7px;
+	border: none;
+	background-color: transparent;
+	z-index: 1;
 }

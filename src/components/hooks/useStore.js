@@ -9,21 +9,24 @@ const INITIAL_STATE = {
 	password: {
 		value: '',
 		validate: false,
-		error: null
+		error: null,
 	},
 	passwordConfirm: {
 		value: '',
 		validate: false,
-		error: null
-	}
+		error: null,
+	},
 };
 
 export const useStore = () => {
 	const [state, setState] = useState(INITIAL_STATE);
 	return {
 		getState: () => state,
-		updateState: (fieldName, newValue) => {
+		updateStateByName: (fieldName, newValue) => {
 			setState({ ...state, [fieldName]: newValue });
+		},
+		updateFullState: (newState) => {
+			setState(newState);
 		},
 	};
 };

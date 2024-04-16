@@ -1,4 +1,9 @@
-export const FormBlock = ({name, label, changeHandler, blurHandler, state}) => {
+import { useState } from "react";
+import { ShowPass } from "../showPass/ShowPass";
+
+export const FormField = ({name, label, type, changeHandler, blurHandler, state}) => {
+	const [fieldType, setFieldType] = useState(type);
+
 	return (
 		<div className="form-block">
 			<label htmlFor={name}>{label}*</label>
@@ -6,12 +11,13 @@ export const FormBlock = ({name, label, changeHandler, blurHandler, state}) => {
 				id={name}
 				className="form-input"
 				name={name}
-				type="text"
+				type={ type === 'text' ? type : fieldType }
 				placeholder={label}
 				value={state[name].value}
 				onChange={changeHandler}
 				onBlur={blurHandler}
 			/>
+			{ type === 'password' &&  <ShowPass state={fieldType} setState={setFieldType}/>}
 			{state[name].error && <div className="form-error">{state[name].error}</div>}
 		</div>
 	);

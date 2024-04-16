@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { LoginBtn } from './components/login-btn/LoginBtn';
+import { LoginBtn } from './components/loginBtn/LoginBtn';
 import { Modal } from './components/modal/Modal';
 
 export const App = () => {

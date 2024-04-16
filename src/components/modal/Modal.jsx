@@ -1,4 +1,4 @@
-import { SignUp } from '../signup-form/SignUp';
+import { SignUp } from '../signupForm/SignUp';
 import './modal.css';
 
 export const Modal = ({state, clickHandler}) => {
