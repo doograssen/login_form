@@ -24,12 +24,7 @@ export const SignUp = () => {
 
 	const submitHandler = (event) => {
 		event.preventDefault();
-		if (password.value !== passwordConfirm.value || passwordConfirm.value === '') {
-			updateStateByName('passwordConfirm', {...currentState['passwordConfirm'], error: ERRORS.MATCHING_PASSWORDS, validate: false});
-		}
-		else if (true) {
-			sendFormData(getState());
-		}
+		sendFormData(getState());
 	};
 
 	const validateEmail = (value) => {
