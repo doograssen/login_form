@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { FormField } from "../formField/FormField";
-import { useStore } from "../hooks/useStore";
+import { useState } from 'react';
+import { FormField } from '../formField/FormField';
+import { useStore } from '../hooks/useStore';
 import './signup.css';
 
 const sendFormData = (formData) => {
